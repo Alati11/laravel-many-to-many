@@ -27,5 +27,10 @@ class Player extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    public function tournaments(){
+        return $this->belongsToMany(Tournament::class);
+
+    }
 }
 

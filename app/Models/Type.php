@@ -15,4 +15,6 @@ class Type extends Model
     {
         return $this->hasMany(Player::class);
     }
+
+    
 }

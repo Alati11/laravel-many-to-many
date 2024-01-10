@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Player;
 use App\Models\Type;
+use App\Models\Tournament;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -19,6 +20,9 @@ class PlayerSeeder extends Seeder
     {
         $types = Type::all();   
         $ids = $types->pluck('id');
+
+        $tournaments = Tournament::all();
+        $tournamentsIts = $tournements->pluck('id');
 
         for($i = 0; $i < 100; $i++){
 
@@ -44,6 +48,9 @@ class PlayerSeeder extends Seeder
             $new_player->points = $faker->numberBetween(600, 12000);
             $new_player->country = $faker->state();
             $new_player->type_id = $faker->randomElement($ids);
+
+            $new_player->type_id = $faker->optional()->randomElement($ids);
+            $new_player->type_id = $faker->optional()->randomElement($typeIds);
        
             $new_player->save();
 
