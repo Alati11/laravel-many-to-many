@@ -14,6 +14,10 @@
                     <ul>
                         <li>Ranking - {{$player->ranking}}</li>
                         <li>Categoria - {{$player->type_id}}</li>
+
+                        @foreach ($player->tournaments as $tournament)
+                        <li class="badge rounded-pill text-bg-primary">{{ $tournament->name }}</li>
+                        @endforeach 
                         <li>Età - {{$player->age}}</li>
                         <li>Peso kg - {{$player->weight}}</li>
                         <li>Altezza cm - {{$player->height}}</li>
