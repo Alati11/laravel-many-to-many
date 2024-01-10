@@ -22,7 +22,7 @@ class PlayerSeeder extends Seeder
         $ids = $types->pluck('id');
 
         $tournaments = Tournament::all();
-        $tournamentsIts = $tournements->pluck('id');
+        $tournamentsIds = $tournaments->pluck('id');
 
         for($i = 0; $i < 100; $i++){
 
@@ -50,9 +50,10 @@ class PlayerSeeder extends Seeder
             $new_player->type_id = $faker->randomElement($ids);
 
             $new_player->type_id = $faker->optional()->randomElement($ids);
-            $new_player->type_id = $faker->optional()->randomElement($typeIds);
+            // $new_player->type_id = $faker->optional()->randomElement($typeIds);
        
             $new_player->save();
+            $new_player->tournaments()->attach($faker->randomElements($tournamentsIds, null));
 
         };
     }
